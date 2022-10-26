@@ -89,7 +89,7 @@ rw = d2*1e6/2;           % Ridge half-width
 %THIS IS RELATED TO d2!
 side = 2;         % Space on side
 % Grid size:
-dx = 0.01;        % grid size (horizontal)
+dx = 0.005;        % grid size (horizontal)
 dy = 0.005;        % grid size (vertical)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -137,7 +137,7 @@ P=sum(sum(S_mode))*dx*dy*10^(-12);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-[E_sd,S_sd,Sr_sd,power_p_sd,power_sr_sd,ratio_sd,Er_sd,P_dB ]=farfield_v4(2,Ex_mode,Ey_mode,Ez_mode,sl,dx,dy,h2,side,delta_epsilon_sd,false,dS_sd,np,r,d1,d2,es,ea,lambda,omega,u,pole,sigma,Lc,beta);
+[E_sd,S_sd,Sr_sd,power_p_sd,power_sr_sd,ratio_sd,Er_sd,P_dB ]=farfield_v4(2,Ex_mode,Ey_mode,Ez_mode,sl,dx,dy,h2,side,delta_epsilon_sd,false,dS_sd,np,r,d1,d2,es,ea,lambda,omega,u,pole,sigma,Lc,beta,0);
 disp(['power_p_sd=',num2str(power_p_sd)]);
 disp(['power_sr_sd=',num2str(power_sr_sd)]);
 

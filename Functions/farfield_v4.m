@@ -1,4 +1,4 @@
-function [ E,S,Sr,power_p,power_sr,ratio,Er,P ] = farfield_v4(mm,Ex_mode,Ey_mode,Ez_mode,sl,dx,dy,h2,side,delta_epsilon,Green_label,dS,np,r,d1,d2,es,ea,lambda,omega,u,pol,sigma,Lc,beta)
+function [ E,S,Sr,power_p,power_sr,ratio,Er,P ] = farfield_v4(mm,Ex_mode,Ey_mode,Ez_mode,sl,dx,dy,h2,side,delta_epsilon,Green_label,dS,np,r,d1,d2,es,ea,lambda,omega,u,pol,sigma,Lc,beta,plt)
 %UNTITLED8 Summary of this function goes here
 %   Detailed explanation goes here
 % This function calculate the farfield poynting vector.
@@ -52,16 +52,18 @@ Jy=cons*Ey_mode(index_x,index_yl:index_yu);
 %Jy=0;
 Jz=cons*Ez_mode(index_x,index_yl:index_yu);
 %Jz=0;
-figure(mm);
-subplot(131);
-plot(abs(Jx));
-title('Jx');
-subplot(132);
-plot(abs(Jy));
-title('Jy');
-subplot(133);
-plot(abs(Jz));
-title('Jz');
+if plt = 1
+	figure(mm);
+	subplot(131);
+	plot(abs(Jx));
+	title('Jx');
+	subplot(132);
+	plot(abs(Jy));
+	title('Jy');
+	subplot(133);
+	plot(abs(Jz));
+	title('Jz');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 J=zeros(index_yu-index_yl+1,3); % This define the line current source;
 ns=index_yu-index_yl+1; % points that describe the source
