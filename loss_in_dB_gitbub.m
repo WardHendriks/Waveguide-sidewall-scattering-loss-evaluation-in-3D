@@ -35,7 +35,8 @@ Lc=50*1e-9; % correlation length, usually 50-100 nm
 np=100; % number of points used to describe E field 
 
 
-
+nmodes=12; % TE and TM
+TE=1;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MAIN
@@ -59,8 +60,7 @@ dS_dl=1*10^(-18);
 dS_sd=dS_dl;
 % To define current density, the mode is calculated in this section
 %%%%%%%%%%%%%%%%%%%% mode calculation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-nmodes=12; % TE and TM
-TE=1;
+
 if as_ratio>=1
     if TE==1
         order=1;
@@ -138,8 +138,8 @@ P=sum(sum(S_mode))*dx*dy*10^(-12);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 [E_sd,S_sd,Sr_sd,power_p_sd,power_sr_sd,ratio_sd,Er_sd,P_dB ]=farfield_v4(2,Ex_mode,Ey_mode,Ez_mode,sl,dx,dy,h2,side,delta_epsilon_sd,false,dS_sd,np,r,d1,d2,es,ea,lambda,omega,u,pole,sigma,Lc,beta,0);
-disp(['power_p_sd=',num2str(power_p_sd)]);
-disp(['power_sr_sd=',num2str(power_sr_sd)]);
+% disp(['power_p_sd=',num2str(power_p_sd)]);
+% disp(['power_sr_sd=',num2str(power_sr_sd)]);
 
 P_dB=P_dB*10^(27);
 power_sd_rc=power_p_sd;
@@ -152,6 +152,6 @@ dB_sidewall_real=dB_sidewall*(ea-es);
 disp(['loss=',num2str(dB_sidewall_real),'dB/cm']);
 
 figure;
-plot(d2record*1e9,dB_sidewall_real)
+plot(d2record*1e9,dB_sidewall_real,'.','MarkerSize',12)
 xlabel('waveguide width [nm]')
 ylabel('loss [dB/cm]')

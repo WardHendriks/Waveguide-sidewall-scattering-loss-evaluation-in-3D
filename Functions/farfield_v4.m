@@ -52,7 +52,7 @@ Jy=cons*Ey_mode(index_x,index_yl:index_yu);
 %Jy=0;
 Jz=cons*Ez_mode(index_x,index_yl:index_yu);
 %Jz=0;
-if plt = 1
+if plt 
 	figure(mm);
 	subplot(131);
 	plot(abs(Jx));
@@ -179,12 +179,14 @@ Stheta=Sr(np/2+1,:);
 %polar(theta,Stheta);
 if Green_label
 else
-figure(mm+1)
-Sr=Sr';
-[az,el]=meshgrid(phi+pi,theta-pi/2);
-%[az,el]=meshgrid(phi,theta);
-[x_p,y_p,z_p]=sph2cart(az,el,Sr);
-surf(x_p,y_p,z_p);
+    Sr=Sr';
+    if plt
+        figure(mm+1)
+        [az,el]=meshgrid(phi+pi,theta-pi/2);
+        %[az,el]=meshgrid(phi,theta);
+        [x_p,y_p,z_p]=sph2cart(az,el,Sr);
+        surf(x_p,y_p,z_p);
+    end
 %surf(abs(Sr));
 %view([-90 90])
 end
