@@ -10,7 +10,7 @@ function [ E,S,Sr,power_p,power_sr,ratio,Er,P ] = farfield_v4(mm,Ex_mode,Ey_mode
 % dx,dy, resolution of mesh
 % h2, waveguide height
 % side, distance from boundry to waveguide
-% Green_lable, ture for dislocation, false for sidewall
+% Green_label, true for dislocation, false for sidewall
 % dS, the 'dS' in E field integration
 % np, points of far field
 % r, distance from (0,0) to far field
@@ -166,7 +166,7 @@ Ss=Ss';
 Sr=Sr';
 power_p=sum(sum(Ss).*dS);
 power_sr=sum(sum(Sr).*dS);
-P=sum(sum(itg).*dS);
+P=sum(sum(itg).*dS); % equation 18 
 ratio=power_p/power_sr; % should be 100%, if poynting vector is fully propagating
 %%%%%% plotting
 Sr=Sr';
